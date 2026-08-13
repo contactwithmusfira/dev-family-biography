@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 // Body copy, forms, and all app UI (Admin Dashboard, Family Portal).
@@ -8,10 +8,13 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-// Headings only — warm editorial serif for a dignified, biography-book feel.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Headings only — a classic, elegant Garamond-style serif chosen to echo
+// the client's own brand wordmark (see public/brand/living-echoes-cover.png
+// and PRODUCT.md item 30) for a dignified, biography-book feel.
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
@@ -55,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${cormorantGaramond.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
