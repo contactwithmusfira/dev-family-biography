@@ -1,0 +1,257 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   THEME SYSTEM — read this before touching colors anywhere else in the app
+   ==========================================================================
+   Every color in the UI flows from the variables in this file. Components
+   never hardcode colors — they use Tailwind classes like `bg-primary`,
+   `text-secondary-foreground`, `border-border`, which resolve to the CSS
+   variables defined below. This means the entire app's look can be changed
+   from this single file.
+
+   Brand source: Navy, Gold, and Cream were sampled directly from the
+   client's real branding (Living Echoes Biography Centers Facebook page —
+   logo, promotional graphics), not invented. Colors were extracted via
+   pixel-cluster sampling across 4 brand images (see PRODUCT.md item 30).
+
+   There are two layers:
+
+   1. BRAND SCALES ("--navy-*", "--gold-*", "--cream-*") — the raw palette.
+      Each is a 50 (lightest) -> 950 (darkest) tint/shade ramp generated
+      from one brand hue. These are also exposed as Tailwind utilities
+      (e.g. `bg-navy-600`, `text-gold-500`) for one-off decorative use.
+
+   2. SEMANTIC TOKENS ("--primary", "--secondary", "--accent", "--muted",
+      "--border", etc.) — these are what components actually use. Each one
+      just points at a specific stop on a brand scale (e.g.
+      `--primary: var(--navy-700)`).
+
+   TO RE-THEME THE WHOLE APP:
+   - Small tweak (e.g. "make primary a bit lighter"): change which scale
+     stop a semantic token points to.
+   - Full rebrand (e.g. "switch primary from navy to blue"): change the
+     hue in the brand scale below (the `oklch(L C H)` values), keeping the
+     lightness/chroma shape of the ramp. Every component updates instantly.
+   ========================================================================== */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-fraunces);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Brand scales exposed as utilities, e.g. bg-navy-600, text-gold-500,
+     border-cream-300. Prefer the semantic tokens above for UI chrome;
+     reach for these directly only for deliberate one-off brand moments. */
+  --color-navy-50: var(--navy-50);
+  --color-navy-100: var(--navy-100);
+  --color-navy-200: var(--navy-200);
+  --color-navy-300: var(--navy-300);
+  --color-navy-400: var(--navy-400);
+  --color-navy-500: var(--navy-500);
+  --color-navy-600: var(--navy-600);
+  --color-navy-700: var(--navy-700);
+  --color-navy-800: var(--navy-800);
+  --color-navy-900: var(--navy-900);
+  --color-navy-950: var(--navy-950);
+
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
+  --color-gold-950: var(--gold-950);
+
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-cream-300: var(--cream-300);
+  --color-cream-400: var(--cream-400);
+  --color-cream-500: var(--cream-500);
+  --color-cream-600: var(--cream-600);
+  --color-cream-700: var(--cream-700);
+  --color-cream-800: var(--cream-800);
+  --color-cream-900: var(--cream-900);
+  --color-cream-950: var(--cream-950);
+}
+
+:root {
+  /* ---- Brand scales -----------------------------------------------------
+     Navy: primary brand color. Deep midnight navy — the dominant dark tone
+     across the client's logo, headlines, and dark panels.
+     Gold: accent brand color. Warm bronze/amber — the client's logo mark
+     (tree icon) and highlight color. Used sparingly, never as a dominant
+     fill.
+     Cream: warm neutral. The client's background tone across their
+     marketing graphics — used for backgrounds, surfaces, and borders
+     instead of cold gray or stark white. */
+  --navy-50: oklch(0.97 0.01 250);
+  --navy-100: oklch(0.93 0.018 250);
+  --navy-200: oklch(0.85 0.028 250);
+  --navy-300: oklch(0.74 0.038 250);
+  --navy-400: oklch(0.6 0.045 250);
+  --navy-500: oklch(0.46 0.048 250);
+  --navy-600: oklch(0.36 0.044 250);
+  --navy-700: oklch(0.3 0.04 250);
+  --navy-800: oklch(0.24 0.036 250);
+  --navy-900: oklch(0.217 0.034 250);
+  --navy-950: oklch(0.15 0.024 250);
+
+  --gold-50: oklch(0.97 0.018 68);
+  --gold-100: oklch(0.93 0.035 67);
+  --gold-200: oklch(0.87 0.055 66);
+  --gold-300: oklch(0.79 0.072 65);
+  --gold-400: oklch(0.7 0.082 64);
+  --gold-500: oklch(0.598 0.085 63);
+  --gold-600: oklch(0.52 0.082 62);
+  --gold-700: oklch(0.43 0.072 61);
+  --gold-800: oklch(0.34 0.058 60);
+  --gold-900: oklch(0.27 0.044 59);
+  --gold-950: oklch(0.18 0.03 58);
+
+  --cream-50: oklch(0.97 0.014 64);
+  --cream-100: oklch(0.888 0.026 64);
+  --cream-200: oklch(0.82 0.028 63);
+  --cream-300: oklch(0.73 0.026 62);
+  --cream-400: oklch(0.63 0.022 61);
+  --cream-500: oklch(0.53 0.018 60);
+  --cream-600: oklch(0.44 0.015 60);
+  --cream-700: oklch(0.35 0.013 60);
+  --cream-800: oklch(0.27 0.011 60);
+  --cream-900: oklch(0.2 0.009 60);
+  --cream-950: oklch(0.13 0.007 60);
+
+  /* ---- Semantic tokens (what components actually use) ------------------- */
+  --background: var(--cream-50);
+  --foreground: var(--navy-950);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--navy-950);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--navy-950);
+  --primary: var(--navy-700);
+  --primary-foreground: var(--cream-50);
+  --secondary: var(--cream-200);
+  --secondary-foreground: var(--navy-800);
+  --muted: var(--cream-100);
+  --muted-foreground: var(--cream-700);
+  --accent: var(--gold-100);
+  --accent-foreground: var(--gold-900);
+  --destructive: oklch(0.55 0.18 25);
+  --border: var(--cream-200);
+  --input: var(--cream-200);
+  --ring: var(--navy-500);
+  --chart-1: var(--navy-600);
+  --chart-2: var(--gold-500);
+  --chart-3: var(--navy-300);
+  --chart-4: var(--gold-300);
+  --chart-5: var(--cream-500);
+  --radius: 0.625rem;
+  --sidebar: var(--navy-950);
+  --sidebar-foreground: var(--cream-100);
+  --sidebar-primary: var(--gold-500);
+  --sidebar-primary-foreground: var(--navy-950);
+  --sidebar-accent: var(--navy-800);
+  --sidebar-accent-foreground: var(--cream-50);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--gold-500);
+}
+
+.dark {
+  --background: var(--navy-950);
+  --foreground: var(--cream-50);
+  --card: var(--navy-900);
+  --card-foreground: var(--cream-50);
+  --popover: var(--navy-900);
+  --popover-foreground: var(--cream-50);
+  --primary: var(--navy-300);
+  --primary-foreground: var(--navy-950);
+  --secondary: var(--navy-800);
+  --secondary-foreground: var(--cream-100);
+  --muted: var(--navy-800);
+  --muted-foreground: var(--cream-400);
+  --accent: var(--gold-900);
+  --accent-foreground: var(--gold-100);
+  --destructive: oklch(0.65 0.18 25);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--navy-300);
+  --chart-1: var(--navy-300);
+  --chart-2: var(--gold-400);
+  --chart-3: var(--navy-600);
+  --chart-4: var(--gold-600);
+  --chart-5: var(--cream-500);
+  --sidebar: var(--navy-950);
+  --sidebar-foreground: var(--cream-100);
+  --sidebar-primary: var(--gold-500);
+  --sidebar-primary-foreground: var(--navy-950);
+  --sidebar-accent: var(--navy-800);
+  --sidebar-accent-foreground: var(--cream-50);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--gold-500);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
