@@ -1,41 +1,116 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# living-echoes-platform
+
+Living Echoes Digital Biography Platform — Phase 1
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Database design (Phase 1)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**8 tables** (plus Supabase `auth.users`):
 
-## Learn More
+| Table | Role |
+|-------|------|
+| `organizations` | Tenant (branch). Its `id` is used as `tenant_id` elsewhere. |
+| `profiles` | Global user identity (1:1 with `auth.users`). **No** `tenant_id`. |
+| `organization_members` | Staff ↔ org join (`role`: admin, moderator, …). Composite PK `(organization_id, user_id)`. |
+| `families` | Customer account container. |
+| `family_members` | User ↔ family join. Composite PK `(family_id, user_id)`. |
+| `biographies` | Memorial content under a family. |
+| `media` | Photos/videos under a biography. |
+| `orders` | Stripe purchase records. |
 
-To learn more about Next.js, take a look at the following resources:
+**Tenancy rule:** `tenant_id` on every tenant-scoped table. Exceptions: `organizations` (it *is* the tenant) and `profiles` (global identity; tenancy comes from memberships).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```mermaid
+erDiagram
+    ORGANIZATIONS ||--o{ ORGANIZATION_MEMBERS : has_staff
+    PROFILES ||--o{ ORGANIZATION_MEMBERS : is_staff_in
+    ORGANIZATIONS ||--o{ FAMILIES : owns
+    FAMILIES ||--o{ FAMILY_MEMBERS : has
+    PROFILES ||--o{ FAMILY_MEMBERS : is_member_of
+    FAMILIES ||--o{ BIOGRAPHIES : contains
+    BIOGRAPHIES ||--o{ MEDIA : contains
+    FAMILIES ||--o{ ORDERS : has
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ORGANIZATIONS {
+        uuid id PK
+        text name
+        text slug
+        bool is_primary
+        bool is_active
+    }
 
-## Deploy on Vercel
+    PROFILES {
+        uuid id PK "FK auth.users"
+        text full_name
+        bool is_platform_admin
+        bool is_active
+    }
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ORGANIZATION_MEMBERS {
+        uuid organization_id PK_FK
+        uuid user_id PK_FK
+        text role
+        bool is_active
+    }
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# living-echoes-platform
-Living Echoes Digital Biography Platform - Phase 1
->>>>>>> origin/main
+    FAMILIES {
+        uuid id PK
+        uuid tenant_id FK
+        text name
+        text status
+        text primary_contact_email
+        text primary_contact_name
+        text primary_contact_phone
+    }
+
+    FAMILY_MEMBERS {
+        uuid family_id PK_FK
+        uuid user_id PK_FK
+        uuid tenant_id FK
+        text relationship_label
+        bool is_active
+    }
+
+    BIOGRAPHIES {
+        uuid id PK
+        uuid family_id FK
+        uuid tenant_id FK
+        text full_name
+        text story
+        text status
+        timestamptz approved_at
+    }
+
+    MEDIA {
+        uuid id PK
+        uuid biography_id FK
+        uuid family_id FK
+        uuid tenant_id FK
+        text media_type
+        text storage_path
+        text caption
+        bool is_published
+        int sort_order
+    }
+
+    ORDERS {
+        uuid id PK
+        uuid family_id FK
+        uuid tenant_id FK
+        text stripe_checkout_session_id
+        text stripe_payment_intent_id
+        int amount_total
+        text currency
+        text status
+        text customer_name
+        text customer_email
+        text customer_phone
+    }
+```
