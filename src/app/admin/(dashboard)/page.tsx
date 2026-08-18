@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 
 import {
@@ -7,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { getAdminFamilies } from "@/lib/admin/get-families";
 import { requireAdminSession } from "@/lib/auth/get-admin-session";
 
 export const metadata: Metadata = {
@@ -19,6 +22,7 @@ export const metadata: Metadata = {
 
 export default async function AdminDashboardPage() {
   const session = await requireAdminSession();
+  const families = await getAdminFamilies(session.organizationId);
 
   return (
     <div className="space-y-6">
@@ -40,8 +44,16 @@ export default async function AdminDashboardPage() {
               Customer accounts created after purchase or by staff.
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">Coming in Ship 2.</p>
+          <CardContent className="flex items-center justify-between gap-4">
+            <p className="text-3xl font-semibold tabular-nums">{families.length}</p>
+            <Button
+              variant="outline"
+              size="sm"
+              nativeButton={false}
+              render={<Link href="/admin/families" />}
+            >
+              View families
+            </Button>
           </CardContent>
         </Card>
 

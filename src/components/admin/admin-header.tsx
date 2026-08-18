@@ -23,10 +23,15 @@ export function AdminHeader({ session }: AdminHeaderProps) {
           </Link>
           <nav
             aria-label="Admin"
-            className="hidden items-center gap-4 text-sm text-muted-foreground sm:flex"
+            className="hidden items-center gap-4 text-sm sm:flex"
           >
-            <span>Families</span>
-            <span>Biographies</span>
+            <Link
+              href="/admin/families"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Families
+            </Link>
+            <span className="text-muted-foreground/60">Biographies</span>
           </nav>
         </div>
 

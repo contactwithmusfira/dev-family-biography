@@ -10,10 +10,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { CheckoutButton } from "@/components/marketing/checkout-button"
 import { Container } from "@/components/marketing/container"
 import { HeroGlow } from "@/components/marketing/hero-glow"
 import { SectionHeading } from "@/components/marketing/section-heading"
 import { checkoutApprovalWindowLabel } from "@/lib/marketing/checkout-confirmation-copy"
+import { isStripeConfigured } from "@/lib/stripe/env"
 
 export const metadata: Metadata = {
   title: "Founder's Digital-Only Package | Living Echoes",
@@ -77,6 +79,8 @@ const faqs = [
 ]
 
 export default function PackagePage() {
+  const checkoutEnabled = isStripeConfigured()
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-border bg-secondary/40">
@@ -123,14 +127,18 @@ export default function PackagePage() {
                 </ul>
               </CardContent>
               <CardFooter className="flex-col gap-3 bg-transparent">
-                <Button
-                  size="lg"
-                  className="w-full"
-                  nativeButton={false}
-                  render={<Link href="/contact" />}
-                >
-                  Get Started
-                </Button>
+                {checkoutEnabled ? (
+                  <CheckoutButton />
+                ) : (
+                  <Button
+                    size="lg"
+                    className="w-full"
+                    nativeButton={false}
+                    render={<Link href="/contact" />}
+                  >
+                    Contact us to get started
+                  </Button>
+                )}
                 <p className="text-center text-xs leading-relaxed text-muted-foreground">
                   After payment, your family account is reviewed by our team.
                   Portal access is activated within{" "}

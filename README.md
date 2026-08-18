@@ -20,9 +20,36 @@ Required now:
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
 - `SUPABASE_SECRET_KEY`
 
-Stripe keys are required from Milestone 2 checkout work onward.
+Stripe keys are required from Milestone 2 checkout work onward:
+
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `STRIPE_PRICE_ID` (one-time price for Founder's Package)
+- `NEXT_PUBLIC_SITE_URL` (used for Checkout success/cancel redirects)
 
 **Never commit real keys.** `.env*` is gitignored.
+
+## Stripe setup (Milestone 2)
+
+1. In the Stripe Dashboard (**Test mode**), create a Product and a **one-time** Price for the Founder's Digital-Only Package.
+2. Copy the **Price ID** (`price_...`) into `STRIPE_PRICE_ID`.
+3. Add test API keys to `.env`.
+4. Install [Stripe CLI](https://stripe.com/docs/stripe-cli) and forward webhooks locally:
+
+```bash
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+```
+
+Copy the webhook signing secret (`whsec_...`) from the CLI output into `STRIPE_WEBHOOK_SECRET`.
+
+5. Run a test checkout from `/package` using card `4242 4242 4242 4242`.
+6. Confirm the family appears at `/admin/families`.
+
+Apply the staff RLS migration before testing the admin list:
+
+```bash
+npm run db:push
+```
 
 ## Supabase setup
 
