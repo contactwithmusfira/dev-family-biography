@@ -20,7 +20,7 @@ Required now:
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
 - `SUPABASE_SECRET_KEY`
 
-Stripe keys can wait until Milestone 4 checkout work.
+Stripe keys are required from Milestone 2 checkout work onward.
 
 **Never commit real keys.** `.env*` is gitignored.
 

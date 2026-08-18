@@ -33,9 +33,9 @@ export function LegalPage({
           <TriangleAlert aria-hidden="true" />
           <AlertTitle>Draft content — pending legal review</AlertTitle>
           <AlertDescription>
-            This page is placeholder content prepared for design and layout
-            review. It has not been reviewed by legal counsel and must be
-            finalized before the site goes live.
+            This page is draft content prepared for design and layout review.
+            It has not been reviewed by legal counsel and must be finalized
+            before the site goes live.
           </AlertDescription>
         </Alert>
 

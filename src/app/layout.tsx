@@ -24,12 +24,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 const description =
   "Living Echoes creates permanent, private online memorials for loved ones.";
 
-// Real brand banner sourced from the client's Facebook page — used as the
-// social share preview until an official logo/OG asset is provided.
-// See public/brand/living-echoes-cover.png and PRODUCT.md item 30.
+// Brand banner sourced from the client's Facebook page — used for social
+// share previews and homepage hero. See PRODUCT.md §14 item 30.
 const brandCoverImage = {
   url: "/brand/living-echoes-cover.png",
   width: 1024,
@@ -38,6 +40,7 @@ const brandCoverImage = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Living Echoes",
   description,
   openGraph: {

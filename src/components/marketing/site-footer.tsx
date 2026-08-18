@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, Phone } from "lucide-react"
+import { Mail } from "lucide-react"
 
 import { Container } from "@/components/marketing/container"
 import { SiteLogo } from "@/components/marketing/site-logo"
@@ -63,13 +63,6 @@ export function SiteFooter() {
           >
             <Mail className="size-4 shrink-0" aria-hidden="true" />
             hello@livingechoes.com
-          </a>
-          <a
-            href="tel:+10000000000"
-            className="flex items-center gap-2 text-sm text-primary-foreground/70 transition-colors hover:text-primary-foreground"
-          >
-            <Phone className="size-4 shrink-0" aria-hidden="true" />
-            (000) 000-0000
           </a>
         </div>
       </Container>

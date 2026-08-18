@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Mail, MapPin, Phone } from "lucide-react"
+import { Mail } from "lucide-react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container } from "@/components/marketing/container"
@@ -10,21 +10,6 @@ export const metadata: Metadata = {
   description:
     "Get in touch with Living Echoes to ask questions or get started with the Founder's Digital-Only Package.",
 }
-
-const contactMethods = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "hello@livingechoes.com",
-    href: "mailto:hello@livingechoes.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "(000) 000-0000",
-    href: "tel:+10000000000",
-  },
-]
 
 export default function ContactPage() {
   return (
@@ -37,51 +22,43 @@ export default function ContactPage() {
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
             Have a question about the Founder&apos;s Package, or ready to get
-            started? We&apos;d love to hear from you.
+            started? Reach out by email — and after purchase, use the same
+            channel to send photos, videos, and memories for the biography.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          {contactMethods.map((method) => (
-            <Card
-              key={method.label}
-              className="border-l-4 border-l-gold-400 transition-shadow hover:shadow-md"
+        <Card className="mx-auto mt-12 max-w-md border-l-4 border-l-gold-400 transition-shadow hover:shadow-md">
+          <CardHeader>
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground ring-1 ring-gold-200">
+              <Mail className="size-5" aria-hidden="true" />
+            </span>
+            <CardTitle className="mt-3 text-base">Email</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <a
+              href="mailto:hello@livingechoes.com"
+              className="text-base font-medium text-foreground underline-offset-4 hover:text-primary hover:underline"
             >
-              <CardHeader>
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground ring-1 ring-gold-200">
-                  <method.icon className="size-5" aria-hidden="true" />
-                </span>
-                <CardTitle className="mt-3 text-base">
-                  {method.label}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <a
-                  href={method.href}
-                  className="text-base font-medium text-foreground underline-offset-4 hover:text-primary hover:underline"
-                >
-                  {method.value}
-                </a>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-6 flex items-start gap-4 rounded-2xl bg-secondary/50 p-6">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <MapPin className="size-5" aria-hidden="true" />
-          </span>
-          <div>
-            <h2 className="font-heading text-base font-semibold text-foreground">
-              Response time
-            </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-              We read every message personally and aim to get back to you as
-              soon as we can. For account or memorial-specific questions,
-              please mention the name on your order so we can find your
-              family&apos;s details quickly.
+              hello@livingechoes.com
+            </a>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              For biography materials, send photos and videos (up to 3 minutes
+              each) by email or any private method our team agrees on with you.
             </p>
-          </div>
+          </CardContent>
+        </Card>
+
+        <div className="mt-8 rounded-2xl bg-secondary/50 p-6 text-center sm:text-left">
+          <h2 className="font-heading text-base font-semibold text-foreground">
+            Response time
+          </h2>
+          <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+            We read every message personally. After payment, please allow up to
+            2 business days while your family account is reviewed and portal
+            access is activated. For memorial-specific questions, mention the
+            name on your order so we can find your family&apos;s details
+            quickly.
+          </p>
         </div>
       </Container>
     </section>

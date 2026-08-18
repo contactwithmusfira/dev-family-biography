@@ -38,25 +38,25 @@ const steps: TimelineStep[] = [
     icon: Gift,
     title: "Purchase the Founder's Package",
     description:
-      "A single, one-time payment secures your family's private memorial — no subscriptions, no hidden fees.",
+      "A single, one-time payment covers one person's biography — no subscriptions, no hidden fees.",
   },
   {
     icon: Images,
     title: "Share their story with us",
     description:
-      "Send us photos, videos, and memories however is easiest for you — email, file transfer, or a phone call.",
+      "Send photos, videos (up to 3 minutes each), and memories by email or any private channel our team agrees on with you.",
   },
   {
     icon: BookHeart,
     title: "We craft the biography",
     description:
-      "Our team writes and assembles a heartfelt biography from what you share, then sets it aside for your review.",
+      "Our team writes and assembles the memorial from what you share. Your account is reviewed and access is activated within up to 2 business days.",
   },
   {
     icon: Lock,
     title: "Your family receives private access",
     description:
-      "Once approved, the people you choose get their own private login to view the memorial — no one else can see it.",
+      "Up to 10 authorized members get their own login to view the memorial in a private, view-only portal.",
   },
 ]
 
@@ -71,7 +71,7 @@ const values: Pillar[] = [
     icon: Users,
     title: "Made for the whole family",
     description:
-      "Invite the people who matter — parents, siblings, children — so everyone can revisit the memorial whenever they need to.",
+      "Invite up to 10 authorized family members — parents, siblings, children — to revisit the memorial whenever they need to.",
   },
   {
     icon: BookHeart,

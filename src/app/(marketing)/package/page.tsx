@@ -13,50 +13,61 @@ import {
 import { Container } from "@/components/marketing/container"
 import { HeroGlow } from "@/components/marketing/hero-glow"
 import { SectionHeading } from "@/components/marketing/section-heading"
+import { checkoutApprovalWindowLabel } from "@/lib/marketing/checkout-confirmation-copy"
 
 export const metadata: Metadata = {
   title: "Founder's Digital-Only Package | Living Echoes",
   description:
-    "A one-time payment for a private, professionally written digital memorial — curated by our team and shared only with the family you choose.",
+    "A one-time payment for one private, professionally written digital memorial — curated by our team and shared with up to ten family members you choose.",
 }
 
-// Placeholder price — confirm final Founder's Package pricing before launch.
+// Confirm final Founder's Package pricing in Stripe before launch.
 const packagePrice = "$799"
 
 const features = [
-  "A professionally written, private biography for your loved one",
-  "Photos and videos curated into their story",
-  "Private portal access for the family members you choose",
-  "Fully handled by our team — just share your materials with us",
-  "Secure, permanent private hosting for your family's memorial",
+  "One professionally written, private biography for your loved one",
+  "Photos and videos curated into their story (videos up to 3 minutes)",
+  "Private portal access for up to 10 authorized family members",
+  "Fully handled by our team — share materials by email or private contact",
+  "Secure, permanent private hosting — view-only in the family portal",
 ]
 
 const trustItems = [
   "One-time payment",
-  "No subscription",
+  "One biography per package",
   "Private & secure",
 ]
 
 const faqs = [
   {
+    question: "Does one package cover more than one person?",
+    answer:
+      "The Founder's Digital-Only Package includes one person's biography. An additional person would require a separate purchase or the applicable Family Echoes option when available.",
+  },
+  {
     question: "What do I need to send you?",
     answer:
-      "Photos, videos, and any written memories or notes you'd like included. You can send these by email, file transfer, or by phone — there's no upload portal to figure out.",
+      "Photos, videos (up to 3 minutes each), and any written memories or notes you'd like included. Send these by email or any other private communication method our team agrees on with you — there is no customer upload portal.",
   },
   {
     question: "Who can view the memorial once it's ready?",
     answer:
-      "Only the family members you'd like to invite. Each person gets their own private login, and no one outside the people you authorize can see the memorial.",
+      "Up to 10 authorized family members you choose. Each person gets their own private login. No one outside the people you authorize can see the memorial.",
+  },
+  {
+    question: "Can family members download photos or videos?",
+    answer:
+      "No. Media is view-only within the private family portal — there is no download option for family members.",
   },
   {
     question: "Can I add more family members later?",
     answer:
-      "Yes. Contact us at any time and we can invite additional authorized family members to the portal.",
+      "Yes. Contact us and we can invite additional authorized members. The default package includes up to 10; our team can adjust that limit when needed.",
   },
   {
-    question: "How long does it take to create the memorial?",
+    question: "What happens after I pay?",
     answer:
-      "It depends on the materials you send and how much detail you'd like included. Our team will keep you updated on progress after you purchase.",
+      "You'll receive a confirmation that your payment was received. Your family account is reviewed and portal access is activated by our team — please allow up to 2 business days. We'll email you when your private portal is ready. There is no login for you to use immediately after checkout.",
   },
   {
     question: "Is this a subscription?",
@@ -75,7 +86,7 @@ export default function PackagePage() {
             The Founder&apos;s Digital-Only Package
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            One payment. A private, lasting digital memorial — written and
+            One payment for one private, lasting digital memorial — written and
             built by our team, shared only with the family you choose.
           </p>
         </Container>
@@ -90,7 +101,7 @@ export default function PackagePage() {
             <Card className="border-t-4 border-t-gold-400">
               <CardHeader className="items-center gap-2 text-center">
                 <span className="text-sm font-medium text-muted-foreground">
-                  One-time payment
+                  One-time payment · one biography
                 </span>
                 <span className="font-heading text-5xl font-semibold text-foreground">
                   {packagePrice}
@@ -120,9 +131,11 @@ export default function PackagePage() {
                 >
                   Get Started
                 </Button>
-                <p className="text-center text-xs text-muted-foreground">
-                  Ready to purchase? Contact us and we&apos;ll walk you
-                  through the next steps.
+                <p className="text-center text-xs leading-relaxed text-muted-foreground">
+                  After payment, your family account is reviewed by our team.
+                  Portal access is activated within{" "}
+                  {checkoutApprovalWindowLabel}. We&apos;ll email you when your
+                  private portal is ready.
                 </p>
               </CardFooter>
             </Card>
