@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/marketing/container";
 
 export const metadata: Metadata = {
-  title: "Checkout cancelled | Living Echoes",
+  title: "Checkout cancelled | Living Echoes Biography Centers",
   robots: {
     index: false,
     follow: false,

@@ -8,9 +8,9 @@ import { PillarList, type Pillar } from "@/components/marketing/pillar-list"
 import { CtaBanner } from "@/components/marketing/cta-banner"
 
 export const metadata: Metadata = {
-  title: "About | Living Echoes",
+  title: "About | Living Echoes Biography Centers",
   description:
-    "Living Echoes helps families preserve the stories of the people they love, through private, professionally written digital memorials.",
+    "Living Echoes Biography Centers helps families preserve the life stories of the people they love through private, professionally written digital biographies.",
 }
 
 const pillars: Pillar[] = [
@@ -18,19 +18,19 @@ const pillars: Pillar[] = [
     icon: NotebookPen,
     title: "Guided by our team",
     description:
-      "You share the photos, videos, and memories — our team writes and assembles the biography for you. There's nothing to upload or format yourself.",
+      "You share photos, videos, and memories offline — our team writes and assembles the biography for you. There is nothing to upload or format yourself.",
   },
   {
     icon: Lock,
     title: "Private by design",
     description:
-      "Memorials are never public. Access is granted only to the family members you authorize, through their own private login.",
+      "Biographies are never public. Up to 10 authorized family members receive their own private, view-only login. Families cannot edit or modify content.",
   },
   {
     icon: HeartHandshake,
     title: "Built to last",
     description:
-      "Once a memorial is created, it's kept safe and accessible for your family — a lasting place to return to, whenever you need it.",
+      "Once created, your loved one's life story is securely preserved for your family — with one year of complimentary remote access included.",
   },
 ]
 
@@ -41,10 +41,10 @@ export default function AboutPage() {
         <HeroGlow />
         <Container className="relative flex flex-col items-center gap-6 py-20 text-center sm:py-24">
           <h1 className="max-w-2xl text-4xl leading-tight font-semibold tracking-tight text-foreground sm:text-5xl">
-            About Living Echoes
+            About Living Echoes Biography Centers
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            We help families preserve the stories of the people they love —
+            We help families preserve the life stories of the people they love —
             with the care and dignity those stories deserve.
           </p>
         </Container>
@@ -69,16 +69,16 @@ export default function AboutPage() {
               </span>
               life is more than dates and facts — it&apos;s a collection of
               moments, voices, and photographs that mean everything to the
-              people who were there. Living Echoes exists to gather those
-              pieces into a single, lasting place: a private digital
-              biography that a family can return to for years to come.
+              people who were there. Living Echoes Biography Centers exists to
+              gather those pieces into a single, lasting place: a private
+              digital biography that a family can return to for years to come.
             </p>
             <p>
-              Rather than asking families to build something themselves
-              during an already difficult time, our team does the work.
-              You send us what you have — offline, at your own pace — and we
-              turn it into a thoughtfully written memorial, ready for the
-              people who matter most to see.
+              Rather than asking families to build something themselves during
+              an already difficult time, our team does the work. You send us
+              what you have — offline, at your own pace — and we turn it into a
+              thoughtfully written life story, ready for the people who matter
+              most to see.
             </p>
           </div>
         </Container>

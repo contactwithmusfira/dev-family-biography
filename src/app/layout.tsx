@@ -28,7 +28,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 const description =
-  "Living Echoes creates permanent, private online memorials for loved ones.";
+  "Living Echoes Biography Centers creates private, professionally written digital biographies and life stories for loved ones.";
 
 // Brand banner sourced from the client's Facebook page — used for social
 // share previews and homepage hero. See PRODUCT.md §14 item 30.
@@ -41,17 +41,17 @@ const brandCoverImage = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Living Echoes",
+  title: "Living Echoes Biography Centers",
   description,
   openGraph: {
-    title: "Living Echoes",
+    title: "Living Echoes Biography Centers",
     description,
     type: "website",
     images: [brandCoverImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Living Echoes",
+    title: "Living Echoes Biography Centers",
     description,
     images: [brandCoverImage.url],
   },

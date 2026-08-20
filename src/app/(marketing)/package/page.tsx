@@ -14,28 +14,29 @@ import { CheckoutButton } from "@/components/marketing/checkout-button"
 import { Container } from "@/components/marketing/container"
 import { HeroGlow } from "@/components/marketing/hero-glow"
 import { SectionHeading } from "@/components/marketing/section-heading"
-import { checkoutApprovalWindowLabel } from "@/lib/marketing/checkout-confirmation-copy"
+import { checkoutPostPaymentNote } from "@/lib/marketing/checkout-confirmation-copy"
 import { isStripeConfigured } from "@/lib/stripe/env"
 
 export const metadata: Metadata = {
-  title: "Founder's Digital-Only Package | Living Echoes",
+  title: "Founder's Digital-Only Package | Living Echoes Biography Centers",
   description:
-    "A one-time payment for one private, professionally written digital memorial — curated by our team and shared with up to ten family members you choose.",
+    "A one-time Founding Member payment for one private, professionally written digital biography — curated by our team, with one year of complimentary remote access for up to ten family members.",
 }
 
 // Confirm final Founder's Package pricing in Stripe before launch.
 const packagePrice = "$799"
 
 const features = [
-  "One professionally written, private biography for your loved one",
-  "Photos and videos curated into their story (videos up to 3 minutes)",
-  "Private portal access for up to 10 authorized family members",
+  "One professionally written, private digital biography for your loved one",
+  "Photos and videos curated into their life story (videos up to 3 minutes)",
+  "Private, view-only portal access for up to 10 authorized family members",
+  "One year of complimentary remote access to the Family Portal",
   "Fully handled by our team — share materials by email or private contact",
-  "Secure, permanent private hosting — view-only in the family portal",
+  "Families cannot upload, edit, or modify biography content",
 ]
 
 const trustItems = [
-  "One-time payment",
+  "One-time package payment",
   "One biography per package",
   "Private & secure",
 ]
@@ -49,12 +50,12 @@ const faqs = [
   {
     question: "What do I need to send you?",
     answer:
-      "Photos, videos (up to 3 minutes each), and any written memories or notes you'd like included. Send these by email or any other private communication method our team agrees on with you — there is no customer upload portal.",
+      "Photos, videos (up to 3 minutes each), and any written memories or notes you'd like included. Send these by email or any other private communication method our team agrees on with you — there is no customer upload portal. Our team handles all biography creation and updates.",
   },
   {
-    question: "Who can view the memorial once it's ready?",
+    question: "Who can view the biography once it's ready?",
     answer:
-      "Up to 10 authorized family members you choose. Each person gets their own private login. No one outside the people you authorize can see the memorial.",
+      "Up to 10 authorized family members you choose. Each person gets their own private, view-only login. No one outside the people you authorize can see the biography, and family members cannot upload, edit, or modify content.",
   },
   {
     question: "Can family members download photos or videos?",
@@ -69,12 +70,17 @@ const faqs = [
   {
     question: "What happens after I pay?",
     answer:
-      "You'll receive a confirmation that your payment was received. Your family account is reviewed and portal access is activated by our team — please allow up to 2 business days. We'll email you when your private portal is ready. There is no login for you to use immediately after checkout.",
+      "You'll receive a confirmation that your payment was received. Our team will review your family account and contact you about next steps for sending materials. When your biography is ready, we will email you with instructions to access the private Family Portal. There is no login for you to use immediately after checkout.",
   },
   {
-    question: "Is this a subscription?",
+    question: "Is the package a subscription?",
     answer:
-      "No. The Founder's Digital-Only Package is a single, one-time payment — there are no recurring charges.",
+      "The Founder's Digital-Only Package itself is a single, one-time payment for one professionally written biography. It includes one year of complimentary remote access to the Family Portal. Continued remote access after the first year requires a paid subscription.",
+  },
+  {
+    question: "What happens after the first year of remote access?",
+    answer:
+      "Your biography remains securely preserved. To continue viewing it remotely through the Family Portal after the complimentary first year, a paid subscription will be required. We will notify you before your complimentary access period ends.",
   },
 ]
 
@@ -90,8 +96,9 @@ export default function PackagePage() {
             The Founder&apos;s Digital-Only Package
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            One payment for one private, lasting digital memorial — written and
-            built by our team, shared only with the family you choose.
+            One Founding Member payment for one private, lasting digital
+            biography — written and built by our team, with one year of
+            complimentary remote access for the family you choose.
           </p>
         </Container>
       </section>
@@ -105,7 +112,8 @@ export default function PackagePage() {
             <Card className="border-t-4 border-t-gold-400">
               <CardHeader className="items-center gap-2 text-center">
                 <span className="text-sm font-medium text-muted-foreground">
-                  One-time payment · one biography
+                  One-time payment · one biography · one year complimentary
+                  access
                 </span>
                 <span className="font-heading text-5xl font-semibold text-foreground">
                   {packagePrice}
@@ -140,10 +148,7 @@ export default function PackagePage() {
                   </Button>
                 )}
                 <p className="text-center text-xs leading-relaxed text-muted-foreground">
-                  After payment, your family account is reviewed by our team.
-                  Portal access is activated within{" "}
-                  {checkoutApprovalWindowLabel}. We&apos;ll email you when your
-                  private portal is ready.
+                  {checkoutPostPaymentNote}
                 </p>
               </CardFooter>
             </Card>

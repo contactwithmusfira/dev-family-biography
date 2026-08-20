@@ -5,12 +5,13 @@ import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/marketing/container";
 import { checkoutConfirmationMessage } from "@/lib/marketing/checkout-confirmation-copy";
+import { contactEmail } from "@/lib/marketing/contact-email";
 import { getStripe } from "@/lib/stripe/client";
 import { isStripeConfigured } from "@/lib/stripe/env";
 import { fulfillCheckoutSession } from "@/lib/stripe/fulfill-checkout-session";
 
 export const metadata: Metadata = {
-  title: "Payment received | Living Echoes",
+  title: "Payment received | Living Echoes Biography Centers",
   robots: {
     index: false,
     follow: false,
@@ -55,12 +56,13 @@ export default async function CheckoutSuccessPage({
         {checkoutConfirmationMessage}
       </p>
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-        When you are ready, send your photos, videos, and written memories to{" "}
+        When you are ready, send your photos, videos, and written life-story
+        materials to{" "}
         <a
-          href="mailto:hello@livingechoes.com"
+          href={`mailto:${contactEmail}`}
           className="font-medium text-foreground underline-offset-4 hover:underline"
         >
-          hello@livingechoes.com
+          {contactEmail}
         </a>
         . Our team will guide you from there.
       </p>

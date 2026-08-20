@@ -22,15 +22,15 @@ import { PillarList, type Pillar } from "@/components/marketing/pillar-list"
 import { CtaBanner } from "@/components/marketing/cta-banner"
 
 export const metadata: Metadata = {
-  title: "Living Echoes | Private Digital Memorials",
+  title: "Living Echoes Biography Centers | Private Digital Biographies",
   description:
-    "Living Echoes creates permanent, private online memorials for loved ones — thoughtfully written and shared only with the family you choose.",
+    "Living Echoes Biography Centers professionally creates and preserves private digital biographies and life stories — written by our team and shared only with the family you choose.",
 }
 
 const trustItems = [
   "Private by design",
-  "One-time payment",
-  "Personally written",
+  "One-time package payment",
+  "Professionally written",
 ]
 
 const steps: TimelineStep[] = [
@@ -38,25 +38,25 @@ const steps: TimelineStep[] = [
     icon: Gift,
     title: "Purchase the Founder's Package",
     description:
-      "A single, one-time payment covers one person's biography — no subscriptions, no hidden fees.",
+      "A single, one-time Founding Member payment covers one person's professionally written biography, including one year of complimentary remote access to the Family Portal.",
   },
   {
     icon: Images,
-    title: "Share their story with us",
+    title: "Share their life story with us",
     description:
-      "Send photos, videos (up to 3 minutes each), and memories by email or any private channel our team agrees on with you.",
+      "Send photos, videos (up to 3 minutes each), and written memories by email or any private channel our team agrees on with you. Our team handles creation — there is no customer upload portal.",
   },
   {
     icon: BookHeart,
     title: "We craft the biography",
     description:
-      "Our team writes and assembles the memorial from what you share. Your account is reviewed and access is activated within up to 2 business days.",
+      "Our team writes and assembles the digital biography from what you share. When it is ready, we invite your authorized family members to the private portal.",
   },
   {
     icon: Lock,
     title: "Your family receives private access",
     description:
-      "Up to 10 authorized members get their own login to view the memorial in a private, view-only portal.",
+      "Up to 10 authorized members get their own login to view the biography in a private, view-only portal. Families cannot upload, edit, or modify biography content.",
   },
 ]
 
@@ -65,25 +65,25 @@ const values: Pillar[] = [
     icon: ShieldCheck,
     title: "Private & secure",
     description:
-      "Every memorial lives behind a private login. Nothing is public, and only the family members you authorize can view it.",
+      "Every biography lives behind a private login. Nothing is public, and only the family members you authorize can view it.",
   },
   {
     icon: Users,
     title: "Made for the whole family",
     description:
-      "Invite up to 10 authorized family members — parents, siblings, children — to revisit the memorial whenever they need to.",
+      "Up to 10 authorized family members — parents, siblings, children — can revisit the life story whenever they need to, each with their own login.",
   },
   {
     icon: BookHeart,
     title: "Written with care, by us",
     description:
-      "You don't have to write or upload anything yourself. Just share your materials — our team handles the rest.",
+      "You do not write or upload content yourself. Share your materials offline and our team professionally creates and preserves the biography.",
   },
   {
     icon: InfinityIcon,
-    title: "A lasting keepsake",
+    title: "A lasting legacy",
     description:
-      "Once created, the memorial is kept safe and accessible for your family for years to come.",
+      "Your loved one's life story is thoughtfully written and securely hosted, with one year of complimentary remote access included and the option to continue thereafter.",
   },
 ]
 
@@ -98,12 +98,12 @@ export default function HomePage() {
               Founder&apos;s Digital-Only Package
             </Badge>
             <h1 className="max-w-xl text-4xl leading-tight font-semibold tracking-tight text-foreground sm:text-5xl sm:leading-tight">
-              A private, lasting place to remember the ones you love.
+              A private, lasting place to honor the life stories you cherish.
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Living Echoes creates a permanent, beautifully written digital
-              memorial for your loved one — crafted by our team, and shared
-              only with the people you choose.
+              Living Echoes Biography Centers professionally creates a
+              beautifully written digital biography for your loved one — crafted
+              by our team, and shared only with the people you choose.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button
@@ -166,7 +166,7 @@ export default function HomePage() {
 
       <section className="py-20">
         <Container>
-          <SectionHeading title="Why families choose Living Echoes" />
+          <SectionHeading title="Why families choose Living Echoes Biography Centers" />
 
           <div className="mt-12">
             <PillarList pillars={values} />
@@ -175,8 +175,8 @@ export default function HomePage() {
       </section>
 
       <CtaBanner
-        title="Ready to create a lasting tribute?"
-        description="Reserve the Founder's Digital-Only Package today, and let us help you preserve their story."
+        title="Ready to preserve a life story?"
+        description="Reserve the Founder's Digital-Only Package today, and let us help you create a lasting digital biography."
         buttonLabel="View the Founder's Package"
         buttonHref="/package"
       />

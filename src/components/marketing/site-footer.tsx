@@ -3,6 +3,7 @@ import { Mail } from "lucide-react"
 
 import { Container } from "@/components/marketing/container"
 import { SiteLogo } from "@/components/marketing/site-logo"
+import { contactEmail } from "@/lib/marketing/contact-email"
 import { legalNavItems, primaryNavItems } from "@/lib/marketing-nav"
 
 export function SiteFooter() {
@@ -14,7 +15,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1">
           <SiteLogo variant="inverted" />
           <p className="max-w-xs text-sm text-primary-foreground/70">
-            Permanent, private digital memorials — thoughtfully written and
+            Permanent, private digital biographies — thoughtfully written and
             lovingly preserved for the families who cherish them.
           </p>
         </div>
@@ -58,18 +59,20 @@ export function SiteFooter() {
             Contact
           </h2>
           <a
-            href="mailto:hello@livingechoes.com"
+            href={`mailto:${contactEmail}`}
             className="flex items-center gap-2 text-sm text-primary-foreground/70 transition-colors hover:text-primary-foreground"
           >
             <Mail className="size-4 shrink-0" aria-hidden="true" />
-            hello@livingechoes.com
+            {contactEmail}
           </a>
         </div>
       </Container>
 
       <Container className="flex flex-col gap-2 border-t border-primary-foreground/10 py-6 text-xs text-primary-foreground/60 sm:flex-row sm:items-center sm:justify-between">
-        <p>&copy; {year} Living Echoes. All rights reserved.</p>
-        <p>Made with care, for the memories that matter.</p>
+        <p>
+          &copy; {year} Living Echoes Biography Centers. All rights reserved.
+        </p>
+        <p>Made with care, for the life stories that matter.</p>
       </Container>
     </footer>
   )

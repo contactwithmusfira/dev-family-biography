@@ -4,11 +4,12 @@ import { Mail } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container } from "@/components/marketing/container"
 import { HeroGlow } from "@/components/marketing/hero-glow"
+import { contactEmail } from "@/lib/marketing/contact-email"
 
 export const metadata: Metadata = {
-  title: "Contact | Living Echoes",
+  title: "Contact | Living Echoes Biography Centers",
   description:
-    "Get in touch with Living Echoes to ask questions or get started with the Founder's Digital-Only Package.",
+    "Get in touch with Living Echoes Biography Centers to ask questions or get started with the Founder's Digital-Only Package.",
 }
 
 export default function ContactPage() {
@@ -23,7 +24,8 @@ export default function ContactPage() {
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
             Have a question about the Founder&apos;s Package, or ready to get
             started? Reach out by email — and after purchase, use the same
-            channel to send photos, videos, and memories for the biography.
+            channel to send photos, videos, and life-story materials for the
+            biography. Our team handles all creation and updates.
           </p>
         </div>
 
@@ -36,10 +38,10 @@ export default function ContactPage() {
           </CardHeader>
           <CardContent>
             <a
-              href="mailto:hello@livingechoes.com"
+              href={`mailto:${contactEmail}`}
               className="text-base font-medium text-foreground underline-offset-4 hover:text-primary hover:underline"
             >
-              hello@livingechoes.com
+              {contactEmail}
             </a>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               For biography materials, send photos and videos (up to 3 minutes
@@ -53,11 +55,10 @@ export default function ContactPage() {
             Response time
           </h2>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-            We read every message personally. After payment, please allow up to
-            2 business days while your family account is reviewed and portal
-            access is activated. For memorial-specific questions, mention the
-            name on your order so we can find your family&apos;s details
-            quickly.
+            We read every message personally. After payment, our team will
+            contact you about next steps for your family account and biography
+            materials. For order-specific questions, mention the name on your
+            order so we can find your family&apos;s details quickly.
           </p>
         </div>
       </Container>
